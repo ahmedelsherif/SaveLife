@@ -1,5 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email, :auth_token
+  attributes :id, :name, :email, :phone_number, :auth_token
+  has_one :city
+  has_one :blood_type
   def initialize(objects, options={})
     super
     @options = options[:serializer_options] || {}

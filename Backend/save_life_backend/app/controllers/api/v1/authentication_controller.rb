@@ -32,7 +32,7 @@ module Api
 
       #user's strong parameters
       def user_params
-        params.fetch(:user, {}).permit(:name, :email, :password, :password_confirmation)
+        params.fetch(:user, {}).permit(:name, :email, :phone_number, :city_id, :blood_type_id, :password, :password_confirmation)
       end
     end
   end
