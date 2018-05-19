@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_19_112620) do
+ActiveRecord::Schema.define(version: 2018_05_19_125453) do
+
+  create_table "blood_donation_requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "city_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_blood_donation_requests_on_city_id"
+    t.index ["user_id"], name: "index_blood_donation_requests_on_user_id"
+  end
+
+  create_table "blood_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -19,6 +40,8 @@ ActiveRecord::Schema.define(version: 2018_05_19_112620) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "city_id", null: false
+    t.integer "blood_type_id", null: false
     t.index ["email"], name: "index_users_on_email"
     t.index ["phone_number"], name: "index_users_on_phone_number"
   end
