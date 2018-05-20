@@ -7,6 +7,8 @@ def end_points
   get 'blood_donation_requests/my_requests', to: 'blood_donation_requests#my_requests'
   put 'blood_donation_requests/resolve_request/:id', to: 'blood_donation_requests#resolve_request'
   put 'blood_donation_requests/cancel_request/:id', to: 'blood_donation_requests#cancel_request'
+  post 'blood_donation_requests/send_email_to_owner/:id', to: 'blood_donation_requests#send_email_to_owner'
+
   resources :cities, :only => [:index]
   resources :blood_types, :only => [:index]
   resources :blood_donation_requests, :only => [:index, :create]

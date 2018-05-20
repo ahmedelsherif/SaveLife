@@ -44,6 +44,7 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
+ config.action_mailer.default_url_options = { host: 'http://0.0.0.0', port: 3000 }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
@@ -51,4 +52,17 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  
+   config.action_mailer.delivery_method = :smtp
+  
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    user_name:            'savelife.notifier@gmail.com',
+    password:             'BuildingPortfolio2018',
+    enable_starttls_auto: true,
+    authentication: "plain" 
+  }
+
 end

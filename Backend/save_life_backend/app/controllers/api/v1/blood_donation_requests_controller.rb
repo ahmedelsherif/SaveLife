@@ -1,7 +1,7 @@
 module Api
   module V1
     class BloodDonationRequestsController < BaseController
-      before_action :set_blood_donation_request, only: [:resolve_request, :cancel_request]
+      before_action :set_blood_donation_request, only: [:resolve_request, :cancel_request, :send_email_to_owner]
       # Home request that gets all requests that I can donate for
       def index
         blood_type_ids = @current_user.blood_types_to_donate_for
@@ -33,7 +33,9 @@ module Api
       end
 
       def send_email_to_owner
-
+        request_owner = @request.user
+        ApplicationMailer.send_donator_found_notification(request_owner, @current_user, @request).deliver_now
+        render json: { meta: meta(SUCCESS_CODE, SUCCESS_ID) }
       end
 
       private

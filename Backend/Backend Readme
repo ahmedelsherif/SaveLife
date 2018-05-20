@@ -3,3 +3,11 @@ Backend Readme
 Gemset: save_life
 Ruby Version: 2.3.0
 Rails Version: 2.5.0
+
+Notification Email
+email: savelife.notifier@gmail.com
+password: BuildingPortfolio2018
+
+Support Email
+email: savelife.support@gmail.com
+password: BuildingPortfolio2018
